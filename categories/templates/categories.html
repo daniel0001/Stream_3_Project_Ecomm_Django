@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block sidebar %}
+    {% for category in categories %}
+        <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
+    {% endfor %}
+{% endblock sidebar %}
+
+
+{% block content %}
+
+    <ol class="breadcrumb">
+        {% for crumb in crumbs %}
+            {% if forloop.last %}
+                <li class="active">{{ crumb.name }}</li>
+            {% else %}
+                <li><a href="{% url 'category' crumb.id %}">{{ crumb.name }}</a></li>
+            {% endif %}
+        {% endfor %}
+    </ol>
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Buy</th>
+            <th>Cart</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td><img height="100" width="100" src="{{ MEDIA_URL }}{{ product.image }}"></td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price }}</td>
+                <td><a href="{% url 'buy_now_stripe' product.id %}" )>Buy Now</a></td>
+                {#                    <td><a href="{% url 'add_to_cart' product.id %}")>Add To Cart</a></td>#}
+                <td>
+                    <form method="post" action="{% url 'add_to_cart' product.id %}">
+                        {% csrf_token %}
+                        Quantity
+                        <input name='quantity' type="number" min="1" max="999">
+                        <button type="submit">Add</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
