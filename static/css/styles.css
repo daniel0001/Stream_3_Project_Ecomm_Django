@@ -5,5 +5,12 @@ i{
     margin-right: 10px;
 }
 .jumbotron{
-    background-image:  url("/static/img/frontpage.png");
+    padding-top: 20%;
+    color: white;
+    height: 800px;
+    background-image:  url("/static/images/frontpage.png");
+    background-size: cover;
+}
+.whiteBkg{
+    background-image:  url("/static/images/dark-mosaic.png");
 }
