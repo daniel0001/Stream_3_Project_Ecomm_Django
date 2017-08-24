@@ -1,37 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Buy</th>
-            <th>Cart</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
+    <div class="table-responsive">  
+        <table class="table table-hover">
+            <thead>
             <tr>
-                <td><img height="100" width="100" src="{{ MEDIA_URL }}{{ product.image }}"></td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.description }}</td>
-                <td>{{ product.price }}</td>
-                <td><a href="{% url 'buy_now_stripe' product.id %}" )>Buy Now</a></td> 
-             
-                {% comment %}<td><a href="{% url 'add_to_cart' product.id %}")>Add To Cart</a></td>{% endcomment %}
-                <td>
-                    <form method="post" action="{% url 'add_to_cart' product.id %}">
-                     
-                        {% csrf_token %}
-                        Quantity
-                        <input name='quantity' type="number" min="1" max="999">
-                        <button type="submit">Add</button>
-                    </form>
-                </td>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Buy</th>
+                <th>Cart</th>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td><img height="260" width="260" src="{{ MEDIA_URL }}{{ product.image }}"></td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>
+                        <a href="{% url 'buy_now_stripe' product.id %}" )>Buy Now</a> 
+                    
+                        {% comment %}<td><a href="{% url 'add_to_cart' product.id %}")>Add To Cart</a></td>{% endcomment %}
+                        <form method="post" action="{% url 'add_to_cart' product.id %}"></td>
+                           {% csrf_token %}
+                            Quantity
+                            <input name='quantity' type="number" min="1" max="999">
+                            <button type="submit">Add</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

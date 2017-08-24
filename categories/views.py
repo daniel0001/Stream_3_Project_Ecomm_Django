@@ -6,13 +6,13 @@ from products.models import Product
 def root_categories(request):
     categories = Category.objects.filter(parent=None)
 
-    args = { 'categories': categories, 'subcategories': {}, 'products': {}}
+    args = { 'root_categories': categories, 'subcategories': {}, 'products': {}}
     return render(request, 'categories.html', args)
 
 
 def get_category(request, id):
     this_category = get_object_or_404(Category, pk=id)
-
+    categories = Category.objects.filter(parent=None)
     crumbs = []
 
     crumb = this_category
@@ -24,7 +24,7 @@ def get_category(request, id):
 
     products = this_category.products.all()
 
-    args = { 'categories': subcategories, 'products': products, 'crumbs': crumbs}
+    args = { 'root_categories': categories, 'subcategories': subcategories,'products': products, 'crumbs': crumbs}
     return render(request, 'categories.html', args)
 
 

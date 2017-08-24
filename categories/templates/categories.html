@@ -1,14 +1,23 @@
 {% extends 'base.html' %}
 
 {% block sidebar %}
-    {% for category in categories %}
-        <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
+    {% for category in root_categories %}
+        <div class="category-name breadcrumb">
+            <a href="{% url 'category' category.id %}">{{ category.name }}</a>
+        </div>  
     {% endfor %}
+
+    <hr>
+
+    {% for category in subcategories %}
+    <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
+    {% endfor %}
+
 {% endblock sidebar %}
 
 
-{% block content %}
 
+{% block content %}
     <ol class="breadcrumb">
         {% for crumb in crumbs %}
             {% if forloop.last %}

@@ -18,7 +18,6 @@ from .serializers import CartItemSerializer
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
-
 @login_required(login_url="/accounts/login")
 def user_cart(request):
     cartItems = CartItem.objects.filter(user=request.user)
@@ -92,6 +91,16 @@ def adjust_cart(request, id):
     else:
         cartItem.delete()
     return redirect(reverse('cart'))
+
+def cart_quantity(request):
+    if request.user.is_anonymous():
+        return {'cart_quantity': 0}
+    else:
+        items = CartItem.objects.filter(user=request.user)
+        quantity = 0
+        for item in items:
+            quantity += item.quantity
+    return {'cart_quantity': quantity}
 
 
 class UserViewSet(viewsets.ModelViewSet):
