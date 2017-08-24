@@ -7,6 +7,7 @@ i{
 .jumbotron{
     padding-top: 20%;
     color: white;
+    font-weight: 800;
     height: 800px;
     background-image:  url("/static/images/frontpage.png");
     background-size: cover;

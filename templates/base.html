@@ -48,7 +48,7 @@
     {% endblock%}
 </header>
  
-<main>
+<main>    
     <div class="container">
         <div class="masthead">
         <hr>
@@ -75,12 +75,17 @@
                 </div>
             </div>
         </div>
-    </main>
-   <hr>
+    </div>
+</main>
 <footer>
-    <p>Made By Daniel Designs</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <p>Made By Daniel Designs  {% now "Y" %}</p>
+            </div>
+        </div>
+    </div>
 </footer>
-</div>
 </body>
 
 </html>
