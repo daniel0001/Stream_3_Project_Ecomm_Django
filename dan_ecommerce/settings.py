@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['com-dan-ecommerce.herokuapp.com', 'localhost']
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
