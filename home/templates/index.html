@@ -1,4 +1,18 @@
 {% extends "base.html" %}
+{% load static from staticfiles %}
+
+{% block header %}
+<div class="jumbotron">
+    <div class="container">
+    <h1>Welcome to Rocket Gizmos!</h1>
+    <p>Ready to start buying the latest in tech?</p>
+    <p>Let's go!</p>
+    <p><a class="btn btn-primary btn-md" href="{% url 'products' %}" role="button"><i class="fa fa-binoculars fa-lg" aria-hidden="true" style="margin-right: 10px;"></i>Show me the gizmos</a></p>
+    </div>
+</div>
+{% endblock %}
+
 {% block content %}
+
 
 {% endblock %}

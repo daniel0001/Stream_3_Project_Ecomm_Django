@@ -1,0 +1,9 @@
+a{
+    decoration: none;
+}
+i{
+    margin-right: 10px;
+}
+.jumbotron{
+    background-image:  url("/static/img/frontpage.png");
+}
