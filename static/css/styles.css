@@ -4,6 +4,9 @@ a{
 i{
     margin-right: 10px;
 }
+h4{
+    color: white;
+}
 .jumbotron{
     padding-top: 20%;
     color: white;
@@ -14,4 +17,10 @@ i{
 }
 .whiteBkg{
     background-image:  url("/static/images/dark-mosaic.png");
+}
+.categoryHeader{
+    background-image:  url("/static/images/categorys.png");
+}
+main{
+    margin-top: 80px;
 }

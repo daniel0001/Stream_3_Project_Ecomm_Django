@@ -50,8 +50,7 @@
  
 <main>    
     <div class="container">
-        <div class="masthead">
-        <hr>
+        <div class="masthead">       
     {% if messages %}
         <div class="alert alert-success">
             <div class="messages">
@@ -60,6 +59,7 @@
                 {% endfor %}
             </div>
         </div>
+    </div>
     {% endif %}
         <div class="row">
             <div class="col-sm-12 col-md-2">
@@ -67,8 +67,8 @@
                     {% block sidebar %}
                     {% endblock sidebar %}
                 </div>
-            </div>
-            <div class="col-sm-12 col-md-8 main">
+            </div>        
+            <div class="col-sm-12 col-md-8">
                 <div class="content">
                     {% block content %}
                     {% endblock content%}

@@ -1,4 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block header%}
+<div class="categoryHeader">
+    <div class="container .whiteBkg">
+        <div class="row">
+            <div class="col-sm-4">
+                <h4>Categories: <small> please choose a category below to search for your next gizmo!</small></h4>
+        </div>
+    </div>
+</div>
+{% endblock%}
+
 
 {% block sidebar %}
     {% for category in root_categories %}
@@ -28,6 +41,7 @@
         {% endfor %}
     </ol>
 
+    
 
     <table class="table table-striped">
         <thead>
@@ -46,15 +60,17 @@
                 <td><img height="100" width="100" src="{{ MEDIA_URL }}{{ product.image }}"></td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.description }}</td>
-                <td>{{ product.price }}</td>
-                <td><a href="{% url 'buy_now_stripe' product.id %}" )>Buy Now</a></td>
-                {#                    <td><a href="{% url 'add_to_cart' product.id %}")>Add To Cart</a></td>#}
+                <td>€{{ product.price }}</td>
+                <td><a href="{% url 'buy_now_stripe' product.id %}" )>Buy Now</a> </td>                    
                 <td>
                     <form method="post" action="{% url 'add_to_cart' product.id %}">
-                        {% csrf_token %}
-                        Quantity
-                        <input name='quantity' type="number" min="1" max="999">
-                        <button type="submit">Add</button>
+                       {% csrf_token %}
+                       <div class="input-group">
+                        <span class="input-group-addon"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                        <input class="form-control" name='quantity' type="number" min="1" max="999" value="1">
+                       </div>
+                        <br>
+                        <button class="btn btn-success btn-sm" type="submit"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Add To Cart</button>
                     </form>
                 </td>
             </tr>
