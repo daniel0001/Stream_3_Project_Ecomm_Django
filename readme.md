@@ -37,9 +37,8 @@ jumbotron = white
 - h5 categories = rgb(0, 140, 186)
 - all other text = rgb(34, 34, 34)
 
-
-
-
+## Icons
+Font Awesome: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
 
 ## Built with 
 1. Django framework
