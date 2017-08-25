@@ -5,8 +5,9 @@
 <div class="categoryHeader">
     <div class="container .whiteBkg">
         <div class="row">
-            <div class="col-sm-4">
-                <h4>Categories: <small> please choose a category below to search for your next gizmo!</small></h4>
+            <div class="col-sm-12">
+                <h4>Categories:</h4>
+                <h4><small> Please choose a category below to search for your next gizmo!</small></h4>
         </div>
     </div>
 </div>
@@ -14,6 +15,10 @@
 
 
 {% block sidebar %}
+<div class="categorySelection">
+        {% for category in subcategories %}
+        <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
+        {% endfor %}
     {% for category in root_categories %}
         <div class="category-name breadcrumb">
             <a href="{% url 'category' category.id %}">{{ category.name }}</a>
@@ -22,10 +27,8 @@
 
     <hr>
 
-    {% for category in subcategories %}
-    <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
-    {% endfor %}
-
+    
+</div>
 {% endblock sidebar %}
 
 

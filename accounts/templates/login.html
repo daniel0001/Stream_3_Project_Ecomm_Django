@@ -6,8 +6,17 @@
         {% csrf_token %}
         {{ form | as_bootstrap }}
         <p><a href="{% url 'password_reset' %}">Forgot my password</a></p>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Login</button>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</button>
+                </form>
+                </div>
+            </div>
         </div>
-    </form>
+        <button onclick="location.href='{% url 'register' %}';" class="btn btn-warning"><i class="fa fa-user" aria-hidden="true"></i>Register</button>
+        
+        
+   
+    
 {% endblock %}

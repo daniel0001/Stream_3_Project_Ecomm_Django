@@ -18,7 +18,7 @@
                     <td><img height="100" width="100" src="{{ MEDIA_URL }}{{ product.image }}"></td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.description }}</td>
-                    <td>€ {{ product.price }}</td>
+                    <td>€{{ product.price }}</td>
                     <td><a href="{% url 'buy_now_stripe' product.id %}" )>Buy Now</a> </td>                    
                     <td>
                         <form method="post" action="{% url 'add_to_cart' product.id %}">
