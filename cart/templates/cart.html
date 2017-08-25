@@ -49,7 +49,7 @@
                         {% csrf_token %}
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-shopping-bag fa-sm" aria-hidden="true"></i></span>
-                            <input class="form-control" name='quantity' type="number" min="1" max="999" value="1">
+                            <input class="form-control" name='quantity' type="number" min="0" max="999">
                         </div>
                         <br>
                         <button class="btn btn-warning" type="submit">Adjust Cart</button>
@@ -80,6 +80,7 @@
                 <div id="credit-card-errors" style="display:none">
                     <div class="alert-message block-message error" id="stripe-error-message"></div>
                 </div>
+                <br>
                 {% csrf_token %}
                 {{ form | as_bootstrap }}
                 <div class="form-group">
