@@ -72,6 +72,21 @@
 
 
 {% block content %}
+<h3>My Products</h3>
+<hr>
+<div class="row">
+        <div class="col-sm-6">
+            <form method="GET" action="{% url 'search' %}" role="search">
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Go!</button>
+                    </span>
+                    <input type="text" class="form-control" name="q" placeholder="Search for Products...">                        
+                </div><!-- /input-group -->
+            </form>              
+        </div>
+    </div>
+    <br>
     <ol class="breadcrumb">
         {% for crumb in crumbs %}
             {% if forloop.last %}
@@ -81,9 +96,6 @@
             {% endif %}
         {% endfor %}
     </ol>
-
-    
-
     <table class="table table-striped">
         <thead>
         <tr>

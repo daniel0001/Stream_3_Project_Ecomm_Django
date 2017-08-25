@@ -40,15 +40,23 @@
 
 
 {% block content %}
-<ol class="breadcrumb">
-    {% for crumb in crumbs %}
-        {% if forloop.last %}
-            <li class="active">{{ crumb.name }}</li>
-        {% else %}
-            <li><a href="{% url 'category' crumb.id %}">{{ crumb.name }}</a></li>
-        {% endif %}
-    {% endfor %}
-</ol>    
+<h3>Results</h3>
+<hr>
+<div class="row">
+    <div class="col-sm-6">
+        <form method="GET" action="{% url 'search' %}" role="search">
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Go!</button>
+                </span>
+                <input type="text" class="form-control" name="q" placeholder="Search for Products...">                        
+            </div><!-- /input-group -->
+        </form>              
+    </div>
+    <div class="col-sm-2 col-sm-offset-2">
+        <button onclick="location.href='{% url 'categories' %}';" class="btn btn-info"><i class="fa fa-search" aria-hidden="true"></i>View Categorys</button>          
+    </div>
+</div>
 
     <table class="table table-striped">
         <thead>
