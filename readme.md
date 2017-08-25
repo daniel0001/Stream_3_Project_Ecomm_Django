@@ -1,7 +1,9 @@
-# Rocket Gizmo's - ecommerce shop
+# Rocket Gizmos - ecommerce shop
 **Ecommerce Web Application with User Authentication and Stripe Payments**
 
 This Web App was built as a final project for the Code Institute's classroom bootcamp. It is a **fictional** Ecommerce site built with Python's *Django* framework - no template was used.
+
+
 
 ## Live Demo
 
