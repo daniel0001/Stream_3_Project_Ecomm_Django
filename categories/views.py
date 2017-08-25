@@ -5,8 +5,9 @@ from products.models import Product
 # Create your views here.
 def root_categories(request):
     categories = Category.objects.filter(parent=None)
+    products = Product.objects.all()
 
-    args = { 'root_categories': categories, 'subcategories': {}, 'products': {}}
+    args = { 'root_categories': categories, 'subcategories': {}, 'products': products }
     return render(request, 'categories.html', args)
 
 

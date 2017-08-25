@@ -1,5 +1,43 @@
 {% extends "base.html" %}
 {% block content %}
+
+{% block header%}
+{% for product in products %}
+<!-- Product Modal -->
+<div id="productModal{{product.id}}" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h3 class="modal-title">{{product.name}}</h3>
+            </div>
+            <div class="modal-body">
+                <img class="thumb" height="260" width="260" src="{{ MEDIA_URL }}{{ product.image }}">
+                <p>{{product.description}}</p>
+                <h5>Price:  €{{product.price}} </h5>
+                <form method="post" action="{% url 'add_to_cart' product.id %}">
+                {% csrf_token %}
+                    <div class="input-group">
+                        
+                        <span class="input-group-addon"><i class="fa fa-shopping-bag" aria-hidden="true"></i>Quantity</span>
+                        <input class="form-control" name='quantity' type="number" min="1" max="999" value="1">
+                    </div>
+                    <br>
+                <button class="btn btn-success btn-sm" type="submit"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Add To Cart</button>
+            </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
+{% endfor %}
+{% endblock %}
+
     <div class="table-responsive">  
         <table class="table table-hover">
             <thead>
@@ -15,7 +53,7 @@
             <tbody>
             {% for product in products %}
                 <tr>
-                    <td><div id="thumbwrap"><img class="thumb" height="100" width="100" src="{{ MEDIA_URL }}{{ product.image }}"></div></td>
+                    <td ><a data-target="#productModal{{product.id}}" role="button" data-toggle="modal"><img class="thumb" height="100" width="100" src="{{ MEDIA_URL }}{{ product.image }}"></a></td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.description }}</td>
                     <td>€{{ product.price }}</td>
@@ -24,8 +62,8 @@
                         <form method="post" action="{% url 'add_to_cart' product.id %}">
                            {% csrf_token %}
                            <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                            <input class="form-control" name='quantity' type="number" min="1" max="999" value="1">
+                                <span class="input-group-addon"><i class="fa fa-shopping-bag" aria-hidden="true"></i></span>
+                                <input class="form-control" name='quantity' type="number" min="1" max="999" value="1">
                            </div>
                             <br>
                             <button class="btn btn-success btn-sm" type="submit"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Add To Cart</button>
