@@ -102,11 +102,5 @@ To run the tests, in your terminal navigate to the folder with your project in, 
     tests.py in the Cart App:
     1. Tests that the url for '/cart/' resolves to the 'cart' function in views.py
 
-* `$ python manage.py test contact` - These will both PASS
-    tests.py in the Contact App:
-    1. Tests that the url for '/contact/' resolves to the 'contact' function in views.py
-    2. Tests that the view returns the correct status code 
-
-etc. etc.
 
 
