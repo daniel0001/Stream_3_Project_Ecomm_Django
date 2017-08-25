@@ -3,7 +3,7 @@
 
 {% block header%}
 <div class="categoryHeader">
-    <div class="container .whiteBkg">
+    <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <h4>Categories:</h4>
@@ -69,7 +69,7 @@
                     <form method="post" action="{% url 'add_to_cart' product.id %}">
                        {% csrf_token %}
                        <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                        <span class="input-group-addon"><i class="fa fa-shopping-bag" aria-hidden="true"></i></span>
                         <input class="form-control" name='quantity' type="number" min="1" max="999" value="1">
                        </div>
                         <br>

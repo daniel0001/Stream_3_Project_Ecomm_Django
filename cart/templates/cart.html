@@ -12,13 +12,26 @@
     <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
 {% endblock %}
 
+{% block header%}
+<div class="cartHeader">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h4>Checkout:</h4>
+                <h4><small> Please pay below to buy your gizmos!</small></h4><h4><small> OR adjust cart if you would like more or less of each product.</small></h4>
+        </div>
+    </div>
+</div>
+{% endblock%}
+
 {% block content %}
+<h2> Cart</h2>
+    <hr>
     <table class="table table-striped">
         <thead>
         <tr>
             <th>Image</th>
             <th>Name</th>
-            <th>Description</th>
             <th>Price</th>
             <th>Quantity</th>
             <th>Action</th>
@@ -27,16 +40,15 @@
         <tbody>
         {% for item in items %}
             <tr>
-                <td><img height="100" width="100" src="{{ MEDIA_URL }}{{ item.product.image }}"></td>
+                <td><img height="50" width="50" src="{{ MEDIA_URL }}{{ item.product.image }}"></td>
                 <td>{{ item.product.name }}</td>
-                <td>{{ item.product.description }}</td>
-                <td>€{{ item.product.price }}</td>
-                <td>{{ item.quantity }}</td>
+                <td><h5>€{{ item.product.price }}</h5></td>
+                <td><h5>{{ item.quantity }}</h5></td>
                 <td>
                     <form method="post" action="{% url 'adjust_cart' item.id %}">
                         {% csrf_token %}
                         <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-plus" aria-hidden="true"></i></span>
+                            <span class="input-group-addon"><i class="fa fa-shopping-bag fa-sm" aria-hidden="true"></i></span>
                             <input class="form-control" name='quantity' type="number" min="1" max="999" value="1">
                         </div>
                         <br>
@@ -47,10 +59,9 @@
             </tr>
         {% endfor %}
         <tr>
-            <td></td>
-            <td></td>
-            <td style="text-align: right;">Total Price:</td>
-            <td>€{{ total }}</td>
+            <td></td>            
+            <td style="text-align: right;"><h3>Total Price:</h3></td>            
+            <td><h3>€{{ total }}</h3></td>
             <td></td>
             <td></td>
         </tr>
@@ -59,18 +70,23 @@
 
     <hr>
 
-    <form role="form" method="post" id="payment-form" action="{% url 'cart' %}">
-        <div id="credit-card-errors" style="display:none">
-            <div class="alert-message block-message error" id="stripe-error-message"></div>
-        </div>
+    {% endblock %}
+    {% block sidebar %}
+        <h2>Pay Now!</h2>
+        <hr>
+        <h5>Cart Total: €{{ total }}</h5>
+        <hr>
+            <form role="form" method="post"  id="payment-form" action="{% url 'cart' %}">
+                <div id="credit-card-errors" style="display:none">
+                    <div class="alert-message block-message error" id="stripe-error-message"></div>
+                </div>
+                {% csrf_token %}
+                {{ form | as_bootstrap }}
+                <div class="form-group">
+                    <input class="btn btn-success" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
+                </div>
+            </form>
 
-        <legend>Pay Now!</legend>
 
-        {% csrf_token %}
-        {{ form | as_bootstrap }}
-        <div class="form-group">
-            <input class="btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
-        </div>
-    </form>
 
 {% endblock %}
