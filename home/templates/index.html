@@ -51,6 +51,24 @@
     <p><a class="btn btn-primary btn-md" href="{% url 'products' %}" role="button"><i class="fa fa-binoculars fa-lg" aria-hidden="true" style="margin-right: 10px;"></i>Show me the gizmos</a></p>
     </div>
 </div>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                    <div class="searchbox">
+                            <form method="GET" action="{% url 'search' %}" class="navbar-form" role="search">
+                                <div class="input-group add-on">
+                                    <input class="form-control" id="srch-term" type="text" name="q" placeholder="Search Products..."/>
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                                        </div>
+                                </div>        
+                            </form>
+                        </div>
+            </div>
+        </div>
+    </div>
+</main> 
 <footer>
     <div class="container">
         <div class="row">

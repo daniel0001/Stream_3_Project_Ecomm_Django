@@ -1,8 +1,6 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends "base.html" %}
 
 {% block header%}
-
 {% for product in products %}
 <!-- Product Modal -->
 <div id="productModal{{product.id}}" class="modal fade" role="dialog">
@@ -37,52 +35,20 @@
         </div>
       </div>
 {% endfor %}
-
-<div class="categoryHeader">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <h4>Categories:</h4>
-                <h4><small> Please choose a category below to search for your next gizmo!</small></h4>
-        </div>
-    </div>
-</div>
-{% endblock%}
-
-
-{% block sidebar %}
-<h3> Select<small> category</small></h3>
-<hr>
-<div class="categorySelection">
-    <ul>
-        {% for category in subcategories %}
-        <li class="category-name"><a href="{% url 'category' category.id %}">{{ category.name }}</a></li>
-        <hr>
-        {% endfor %}
-    </ul>
-    {% for category in root_categories %}
-        <div class="category-name breadcrumb">
-            <a href="{% url 'category' category.id %}"><h5>{{ category.name }}</h5></a>
-        </div>  
-    {% endfor %}
-    <hr>    
-</div>
-{% endblock sidebar %}
+{% endblock %}
 
 
 
 {% block content %}
-    <ol class="breadcrumb">
-        {% for crumb in crumbs %}
-            {% if forloop.last %}
-                <li class="active">{{ crumb.name }}</li>
-            {% else %}
-                <li><a href="{% url 'category' crumb.id %}">{{ crumb.name }}</a></li>
-            {% endif %}
-        {% endfor %}
-    </ol>
-
-    
+<ol class="breadcrumb">
+    {% for crumb in crumbs %}
+        {% if forloop.last %}
+            <li class="active">{{ crumb.name }}</li>
+        {% else %}
+            <li><a href="{% url 'category' crumb.id %}">{{ crumb.name }}</a></li>
+        {% endif %}
+    {% endfor %}
+</ol>    
 
     <table class="table table-striped">
         <thead>
