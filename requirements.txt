@@ -6,7 +6,7 @@ dj-database-url==0.4.2
 Django==1.11.2
 django-forms-bootstrap==3.1.0
 django-storages==1.6.5
-djangorestframework==3.6.3
+djangorestframework==3.11.2
 gunicorn==19.7.1
 idna==2.5
 olefile==0.44
